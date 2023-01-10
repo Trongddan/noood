@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const authorSchema = new mongoose.Schema({
   name:{type:String},
   year:{
-    type:Number
+    type:Number,
+    required:true
   },
   books:[
     {

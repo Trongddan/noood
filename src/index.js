@@ -7,11 +7,14 @@ const dotEnv = require("dotenv");
 const router = require("./routes/index");
 const app = express();
 dotEnv.config();
-mongoose.connect(`${process.env.MONGODB_URL}`, () => console.log("connected"));
+
 app.use(bodyParser.json({ limit: "50mb" }));
 
 app.use(cors());
 app.use(morgan("common"));
+mongoose.connect("mongodb://localhost:27017/restapi", () =>
+  console.log("connected")
+);
 router(app);
 // connect Database
 
