@@ -23,7 +23,12 @@ const bookSchema = new mongoose.Schema({
     ref:"Author"
   }
 });
+const cateSchema =  new mongoose.Schema({
+  name:{type:String, unique:true,required:true},
+  description:{type:String,unique:true, required:true}
+})
 
 let Book = mongoose.model("Book",bookSchema); 
 let Author =mongoose.model("Author",authorSchema)
-module.exports = {Book,Author}
+let Category =  mongoose.model('Category', cateSchema)
+module.exports = {Book,Author,Category}
