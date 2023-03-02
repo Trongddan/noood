@@ -13,7 +13,7 @@ const authorController = {
   // get all author
   getAllAuhthor: async (req, res) => {
     try {
-      const authors = await Author.find();
+      const authors = await Author.find().populate("books");
       res.status(200).json(authors);
     } catch (error) {
       res.status(500).json(error);
@@ -26,6 +26,7 @@ const authorController = {
       const author = await Author.findById(req.params.id).populate("books");
       res.status(200).json(author);
     } catch (error) {
+      console.log(req.params.id);
       res.status(500).json(error);
     }
   },
