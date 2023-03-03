@@ -24,6 +24,22 @@ const categoryController = {
     } catch (error) {
       res.status(500).json("delete unsuccessfully");
     }
-  },  
+  },
+  updateCate: async (req, res) => {
+    try {
+      console.log(req.params.id);
+      const cateFound = await Category.findById(req.params.id);
+      if (!cateFound) {
+        res.status(404).json({ mess: "Không tìm thấy danh mục" });
+      } else {
+       await cateFound.updateOne({
+          $set: { name: req.body.name, description: req.body.description },
+        });
+        res.status(200).json({mess:"Cập nhập thành công"})
+      }
+    } catch (error) {
+      res.status(500).json({mess:"Đã có lỗi xảy ra vui lòng thử lại"})
+    }
+  },
 };
 module.exports = categoryController;
