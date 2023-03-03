@@ -17,5 +17,13 @@ const categoryController = {
       res.status(500).json("Lấy danh sách thất bại");
     }
   },
+  deleCategory: async (req, res) => {
+    try {
+      const cateId = await Category.deleteOne({ _id: req.params.id });
+      res.status(200).json("delete successfully");
+    } catch (error) {
+      res.status(500).json("delete unsuccessfully");
+    }
+  },  
 };
 module.exports = categoryController;

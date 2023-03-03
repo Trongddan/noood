@@ -25,8 +25,8 @@ const bookSchema = new mongoose.Schema({
   }
 });
 const cateSchema =  new mongoose.Schema({
-  name:{type:String, unique:true,required:true},
-  description:{type:String,unique:true, required:true}
+  name:{type:String, unique:true,required:true,minLength:8},
+  description:{type:String,required:true,minLength:8}
 })
 
 let Book = mongoose.model("Book",bookSchema); 
